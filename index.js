@@ -9,6 +9,9 @@ app.set('view engine', 'ejs');
 app.set('views', './src/views');
 app.use(expressLayouts);
 app.set('layout',__dirname+'/src/views/layouts/layout');
+app.use(express.static(__dirname+'/src/assests'));
+app.set('layout extractStyles', true);
+app.set('layout extractScripts', true);
 //after setting all middlewares and views then route your request
 app.use('/',router);
 
