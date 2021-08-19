@@ -37,6 +37,7 @@ app.use(session({
 
 app.use(passport.initialize());
 app.use(passport.session());
+app.use(passport.setAuthenticatedUser);
 
 //after setting all middlewares and views then route your request
 app.use('/',router);
