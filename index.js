@@ -2,6 +2,7 @@ const express = require('express');
 const router = require('./src/routes/index');
 var expressLayouts = require('express-ejs-layouts');
 const app = express();
+const connect = require('./src/config/database');
 
 
 
@@ -15,6 +16,7 @@ app.set('layout extractScripts', true);
 //after setting all middlewares and views then route your request
 app.use('/',router);
 
-app.listen(3000, () => {
+app.listen(3000, async () => {
+    await connect();
     console.log('server started at port 3000');
 })
