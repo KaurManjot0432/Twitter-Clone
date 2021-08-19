@@ -1,10 +1,17 @@
 const express = require('express');
+const { json, urlencoded }  = require('body-parser');
+const cors = require('cors');
+
 const router = require('./src/routes/index');
 var expressLayouts = require('express-ejs-layouts');
-const app = express();
 const connect = require('./src/config/database');
 
 
+const app = express();
+
+app.use(cors());
+app.use(json());
+app.use(urlencoded({extended:true}));
 
 app.set('view engine', 'ejs');
 app.set('views', './src/views');
