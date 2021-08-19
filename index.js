@@ -1,6 +1,10 @@
 const express = require('express');
 const { json, urlencoded }  = require('body-parser');
 const cors = require('cors');
+const session = require('express-session');
+const passport = require('passport');
+
+const passport_local = require('./src/config/passport_local_strategy');
 
 const router = require('./src/routes/index');
 var expressLayouts = require('express-ejs-layouts');
@@ -20,6 +24,20 @@ app.set('layout',__dirname+'/src/views/layouts/layout');
 app.use(express.static(__dirname+'/src/assests'));
 app.set('layout extractStyles', true);
 app.set('layout extractScripts', true);
+
+app.use(session({
+    name : "twitter",
+    secret : "kaurmanjot",
+    resave : false,
+    cookie : {
+        maxAge : 6000000
+    }
+
+}))
+
+app.use(passport.initialize());
+app.use(passport.session());
+
 //after setting all middlewares and views then route your request
 app.use('/',router);
 
