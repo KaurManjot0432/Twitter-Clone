@@ -16,4 +16,6 @@ router.post('/create-session', passport.authenticate(
     }
 ) ,userController.create_session);
 
+router.get('/signout', userController.destroySession);
+
 module.exports = router;
