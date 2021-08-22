@@ -1,3 +1,10 @@
 
 <h1>Welcome to <%= title %></h1>
 
+<section>
+    <h4>Create a Tweet!</h4>
+    <form action="/tweets/create" method="POST">
+        <textarea name="content" id="" cols="30" rows="10" placeholder="Your Tweet..."></textarea>
+        <input type="submit" value="create tweet ">
+    </form>
+</section> 
