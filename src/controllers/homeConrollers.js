@@ -1,7 +1,20 @@
-const ejs = require('ejs');
-const { reset } = require('nodemon');
-
+const tweet = require('../models/tweet');
 
 module.exports.root = function(req,res){
-    return res.render('home', {title : "Twitter"});
+    tweet.find({})
+    .populate('user')
+    .exec(function(err,tweets)
+    {
+        let fetchedTweets = tweets;
+        console.log(tweets);
+    
+        if(err){
+            console.error("error finding tweet");
+            fetchedTweets = {};
+        }
+        return res.render('home', {
+            title : "Twitter",
+            tweets : fetchedTweets,
+        });
+    });
 }
