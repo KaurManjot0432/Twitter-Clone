@@ -1,9 +1,30 @@
-<h1>Sign Up</h1>
+<link rel="stylesheet" href="/css/user.css">
+<h1 class="head">Create your account</h1>
 
-<form action="/users/create" method="POST">
-    <input type="text" name="name" placeholder="UserName" required>
-    <input type="email" name="email" placeholder="Email" required>
-    <input type="password" name="password" placeholder="Password" required>
-    <input type="password" name="confirm_password" placeholder="Confirm Password" required>
-    <input type="submit" value="SignUp">
-</form>
+<div class="signin-form">
+    <form action="/users/create" method="POST">
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Username</label>
+            <input type="text" class="form-control" name="name" aria-describedby="emailHelp">
+          </div>
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label">Email address</label>
+          <input type="email" class="form-control" name="email" aria-describedby="emailHelp">
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputPassword1" class="form-label">Password</label>
+          <input type="password" name="password" class="form-control" >
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Confirm Password</label>
+            <input type="password" name="confirm_password" class="form-control" >
+          </div>
+    
+        <button type="submit" class="btn btn-primary">Create account</button>
+      </form>
+     
+</div>
+<div class="sign-up-link">
+    Already have an account?
+    <a href="/users/signin" class="link-dark">Sign in for Twitter</a>
+</div>

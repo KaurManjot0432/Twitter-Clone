@@ -1,0 +1,18 @@
+.signin-form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 85%;
+}
+
+.head{
+    text-align: center;
+}
+
+.sign-up-link{
+    padding : 13px;
+    margin : 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

@@ -8,14 +8,14 @@ module.exports.signup = function(req,res){
     if(req.isAuthenticated()){
         return res.redirect('/users/profile');
     }
-    return res.render('users/user_sign_up');
+    return res.render('users/user_sign_up',{layout:__dirname+'/../views/layouts/user_layout'});
 }
 
 module.exports.signin = function(req,res){
     if(req.isAuthenticated()){
         return res.redirect('/users/profile');
     }
-    return res.render('users/user_sign_in');
+    return res.render('users/user_sign_in',{layout:__dirname+'/../views/layouts/user_layout'});
 }
 
 module.exports.create = function(req,res){
