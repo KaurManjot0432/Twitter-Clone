@@ -1,4 +1,5 @@
 const Tweet = require('../models/tweet');
+const Comment = require('../models/comment');
 
 const create = function(req,res){
     Tweet.create({
@@ -13,5 +14,21 @@ const create = function(req,res){
     })
 }
 
+const destroy = function(req,res){
+    Tweet.findById(req.params.id, function(err,tweet){
+        if(err){
+            return res.redirect('/');
+        }
+        if(tweet.user == req.user.id){
+            tweet.remove();
+            Comment.deleteMany({tweet : req.params.id}, function(err){
+                return res.redirect('back');
+            });
+        } else {
+            return res.redirect('back');
+        }
+    })
+}
 
-module.exports = {create};
+
+module.exports = {create, destroy};

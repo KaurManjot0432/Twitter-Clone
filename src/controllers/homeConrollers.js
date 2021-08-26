@@ -1,4 +1,5 @@
 const tweet = require('../models/tweet');
+const User = require('../models/user');
 
 module.exports.root = function(req,res){
     tweet.find({})
@@ -9,11 +10,11 @@ module.exports.root = function(req,res){
             path : 'user'
         }
     })
-    .exec(function(err,tweets)
+    .exec(async function(err,tweets)
     {
         let fetchedTweets = tweets;
-        console.log(tweets);
-    
+        // console.log(tweets);
+        let users = await User.find({});
         if(err){
             console.error("error finding tweet");
             fetchedTweets = {};
@@ -21,6 +22,7 @@ module.exports.root = function(req,res){
         return res.render('home', {
             title : "Twitter",
             tweets : fetchedTweets,
+            users : users
         });
     });
 }

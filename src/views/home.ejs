@@ -13,31 +13,17 @@
 <div>
     <ul>
         <% for(tweet of tweets){ %> 
-            <li><h2><%= tweet.content %> </h2></li>
-            <small><b><%= tweet.user.name %> </b></small>
-
-            <div>
-                <% if(locals.user){ %>
-                    <form action="/comments/create" method="POST">
-                        <input type="text" name="content" placeholder="Write a comment.." required >
-                        <input type="hidden" name="tweet" id="" value="<%= tweet._id %>">
-                        <input type="submit" value="Add Comment">
-                    </form>    
-                <% } %> 
-                <div>
-                    <ul>
-                        <% for(comment of tweet.comments) { %>
-                            <p>
-                                <%= comment.content %> 
-                                <br>
-                                <small><%= comment.user.name %> </small>
-                            </p>
-                        <% } %>  
-                    </ul>
-                </div>
-            </div>
-
-            <hr>
+            <%- include('./tweets/_tweet'); %>
         <% } %> 
     </ul>
 </div>
+
+<section>
+    <h4>Users</h4>
+    <ul>
+        <% for(user of users){ %> 
+            <li><a href="/users/profile/<%=user.id%>"><%= user.name %> </a></li>
+            <% } %> 
+    </ul>
+</section>
+
